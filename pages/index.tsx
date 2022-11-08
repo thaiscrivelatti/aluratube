@@ -3,18 +3,16 @@ import styled from "styled-components";
 import { CSSReset } from "../src/components/CSSReset";
 import Menu from "../src/components/Menu";
 import { StyledTimeline } from "../src/components/Timeline";
+import { assets } from "../assets";
 
 function HomePage() {
   const estiloHomePage = {
     // backgroundColor: "red",
   };
 
-  console.log(config.playlists);
-
   return (
     <>
       <CSSReset />
-
       <div
         style={{
           display: "flex",
@@ -34,21 +32,31 @@ function HomePage() {
 export default HomePage;
 
 /** Components */
-const StyledHeader = styled.div`
+const StyledHeader = styled.section`
   img {
     width: 80px;
     height: 80px;
     border-radius: 50%;
+    margin: 20px;
   }
   .user-info {
     display: flex;
+    align-items: center;
+    border: 1px solid red;
+    margin: 10px 20px;
   }
+`;
+
+const StyledBanner = styled.div`
+  background-color: gray;
+  background-image: url(${config.bannerUrl});
+  height: 230px;
 `;
 
 function Header() {
   return (
     <StyledHeader>
-      {/*<img src="banner" />*/}
+      <StyledBanner />
       <section className="user-info">
         <img src={`https://github.com/${config.github}.png`} />
         <div>
@@ -61,7 +69,6 @@ function Header() {
 }
 
 function Timeline(props: any) {
-  console.log("Dentro do componente", props);
   const playlistNames = Object.keys(props.playlists);
   return (
     <StyledTimeline>
