@@ -1,9 +1,8 @@
 import config from "../config.json";
 import styled from "styled-components";
 import { CSSReset } from "../src/components/CSSReset";
-import Menu from "../src/components/Menu";
+import Menu from "../src/components/Menu/Menu";
 import { StyledTimeline } from "../src/components/Timeline";
-import { assets } from "../assets";
 
 function HomePage() {
   const estiloHomePage = {
@@ -29,8 +28,6 @@ function HomePage() {
   );
 }
 
-export default HomePage;
-
 /** Components */
 const StyledHeader = styled.section`
   img {
@@ -42,7 +39,6 @@ const StyledHeader = styled.section`
   .user-info {
     display: flex;
     align-items: center;
-    border: 1px solid red;
     margin: 10px 20px;
   }
 `;
@@ -50,7 +46,9 @@ const StyledHeader = styled.section`
 const StyledBanner = styled.div`
   background-color: gray;
   background-image: url(${config.bannerUrl});
-  height: 230px;
+  background-position: center;
+  background-size: cover;
+  height: 300px;
 `;
 
 function Header() {
@@ -93,3 +91,5 @@ function Timeline(props: any) {
     </StyledTimeline>
   );
 }
+
+export default HomePage;
