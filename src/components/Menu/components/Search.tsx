@@ -35,12 +35,13 @@ const StyledSearch = styled.div`
   }
 `;
 
-export default function Search() {
-  const [search, setSearch] = useState("Frost");
+export default function Search(props: any) {
+  const {searchValue} = props;
+  const {setSearchValue} = props;
+  
   return (
     <StyledSearch>
-      <input type="text" onChange={(event) => setSearch(event.target.value)} />
-      {search}
+      <input type="text" onChange={(event) => setSearchValue(event.target.value)} value={searchValue}/>
       <button>Search</button>
     </StyledSearch>
   );

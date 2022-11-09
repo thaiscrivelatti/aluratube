@@ -1,13 +1,17 @@
+import { useState } from "react";
 import config from "../config.json";
 import styled from "styled-components";
 import { CSSReset } from "../src/components/CSSReset";
 import Menu from "../src/components/Menu/Menu";
 import { StyledTimeline } from "../src/components/Timeline";
+import { Props } from "next/script";
 
 function HomePage() {
   const estiloHomePage = {
     // backgroundColor: "red",
   };
+
+  const [searchValue, setSearchValue] = useState("");
 
   return (
     <>
@@ -20,9 +24,9 @@ function HomePage() {
           // backgroundColor: "red",
         }}
       >
-        <Menu />
+        <Menu searchValue={searchValue} setSearchValue={setSearchValue}/>
         <Header />
-        <Timeline playlists={config.playlists} />
+        <Timeline playlists={config.playlists} searchValue={searchValue}/>
       </div>
     </>
   );
@@ -67,16 +71,24 @@ function Header() {
 }
 
 function Timeline(props: any) {
-  const playlistNames = Object.keys(props.playlists);
+  const { searchValue } = props;
+  const { playlists } = props;
+
+  const playlistNames = Object.keys(playlists);
   return (
     <StyledTimeline>
       {playlistNames.map((playlistName) => {
-        const videos = props.playlists[playlistName];
+        const videos = playlists[playlistName];
         return (
-          <section>
+          <section key={playlistName}>
             <h2> {playlistName} </h2>
             <div>
-              {videos.map((video: any) => {
+              {videos.filter((video: any)=>{
+                // "Normalize" strings to lower case, so the search is not case sensitive
+                const titleNormalized = video.title.toLowerCase();
+                const searchNormalized = searchValue.toLowerCase();
+                return titleNormalized.includes(searchNormalized);
+              }).map((video: any) => {
                 return (
                   <a href={video.url} key={video.url}>
                     <img src={video.thumb} />
