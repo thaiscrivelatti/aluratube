@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 import { ColorModeContext } from "./ColorMode";
-//import { ColorModeContext } from "./ColorMode";
 
 const StyledSwitch = styled.div`
   background-color: #333333;
@@ -55,6 +54,7 @@ export default function DarkModeSwitch() {
         id="darkmode"
         type="checkbox"
         onChange={() => {
+          console.log("mudou o state");
           context.toggleMode();
         }}
       />

@@ -42,7 +42,7 @@ const StyledHeader = styled.section`
     display: flex;
     align-items: center;
     margin: 10px 20px;
-  }
+  } 
 `;
 
 const StyledBanner = styled.div`
