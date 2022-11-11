@@ -7,6 +7,7 @@ import ColorModeProvider, {
 } from "../src/components/Menu/components/ColorMode";
 import { Provider, ProviderProps, useContext } from "react";
 import { ObjectType } from "typescript";
+import RegisterVideo from "../src/components/RegisterVideo/RegisterVideo";
 
 const theme: any = {
   light: {
@@ -27,21 +28,17 @@ const theme: any = {
 
 function ProviderWrapper(props: any) {
   return (
-    <ColorModeProvider initialMode={"dark"}>
-      {props.children}
-    </ColorModeProvider>
+    <ColorModeProvider initialMode={"dark"}>{props.children}</ColorModeProvider>
   );
 }
 
 function MyApp({ Component, pageProps }: AppProps) {
   const context = useContext(ColorModeContext);
-  
-  console.log("conslsk",context);
-
   return (
     <ThemeProvider theme={theme[context.mode]}>
       <CSSReset />
       <Component {...pageProps} />
+      <RegisterVideo />
     </ThemeProvider>
   );
 }
