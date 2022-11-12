@@ -1,5 +1,12 @@
 import { createGlobalStyle } from "styled-components";
 
+declare module 'styled-components' {
+  export interface DefaultTheme {
+    backgroundBase: string;
+    textColorBase: string;
+  }
+}
+
 export const CSSReset = createGlobalStyle`
   /* Reset */
   * {

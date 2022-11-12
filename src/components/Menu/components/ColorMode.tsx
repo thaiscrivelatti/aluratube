@@ -1,4 +1,4 @@
-import { createContext, ProviderProps, useState } from "react";
+import { createContext, useState } from "react";
 
 
 interface ColorModeContextInterface {

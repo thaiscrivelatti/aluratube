@@ -1,12 +1,11 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import { CSSReset } from "../src/components/CSSReset";
-import { ThemeProvider, ThemeContext } from "styled-components";
+import { ThemeProvider } from "styled-components";
 import ColorModeProvider, {
   ColorModeContext,
 } from "../src/components/Menu/components/ColorMode";
-import { Provider, ProviderProps, useContext } from "react";
-import { ObjectType } from "typescript";
+import { useContext } from "react";
 import RegisterVideo from "../src/components/RegisterVideo/RegisterVideo";
 
 const theme: any = {
